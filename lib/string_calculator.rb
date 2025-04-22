@@ -1,6 +1,7 @@
 class StringCalculator
   def self.add(numbers)
     return 0 if numbers.empty?
+    nums = []
     
     if numbers.start_with?("//")
       delimiter = numbers[2]
@@ -16,6 +17,6 @@ class StringCalculator
       raise "Negative numbers not allowed #{negatives.join(',')}"
     end
     
-    nums.sum
+    nums.select { |n| n <= 1000 }.sum
   end
 end
