@@ -34,5 +34,10 @@ RSpec.describe StringCalculator do
     it 'shows all negative numbers in the exception message' do
       expect { StringCalculator.add("1,-2,-3,4,-5") }.to raise_error(RuntimeError, "Negative numbers not allowed -2,-3,-5")
     end
+
+    it 'ignores numbers bigger than 1000' do
+      expect(StringCalculator.add("2,1001")).to eq(2)
+      expect(StringCalculator.add("2,1000")).to eq(1002)
+    end
   end
 end
