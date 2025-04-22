@@ -1,4 +1,5 @@
 require_relative '../lib/string_calculator'
+require 'pry'
 
 RSpec.describe StringCalculator do
   describe '.add' do
@@ -8,6 +9,10 @@ RSpec.describe StringCalculator do
 
     it 'returns the number for a single number' do
       expect(StringCalculator.add("1")).to eq(1)
+    end
+
+    it 'returns the sum of two numbers' do
+      expect(StringCalculator.add("1,5")).to eq(6)
     end
   end
 end
