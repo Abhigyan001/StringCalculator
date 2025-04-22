@@ -4,8 +4,15 @@ class StringCalculator
     nums = []
     
     if numbers.start_with?("//")
-      delimiter = numbers[2]
+      delimiter_section = numbers.split("\n", 2)[0]
       numbers_part = numbers.split("\n", 2)[1]
+      
+      if delimiter_section.start_with?("//[") && delimiter_section.end_with?("]")
+        delimiter = delimiter_section[3..-2]
+      else
+        delimiter = delimiter_section[2]
+      end
+      
       nums = numbers_part.gsub(delimiter, ",").split(',').map(&:to_i)
     else
       nums = numbers.gsub("\n", ",").split(',').map(&:to_i)
